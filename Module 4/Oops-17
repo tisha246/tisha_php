@@ -1,0 +1,85 @@
+If you're looking to allow users to edit the table directly in place without a separate form, we can modify the script to enable an "editing mode" directly within the table cells. Here's how you can achieve this:
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 11 - Editing Mode</title>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+  .editing input[type="text"] {
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+
+<table id="myTable">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Actions</th>
+  </tr>
+  <tr>
+    <td contenteditable="true">John Doe</td>
+    <td contenteditable="true">john@example.com</td>
+    <td>
+      <button onclick="toggleEditMode(this)">Edit</button>
+      <button onclick="deleteRow(this)">Delete</button>
+    </td>
+  </tr>
+  <tr>
+    <td contenteditable="true">Jane Smith</td>
+    <td contenteditable="true">jane@example.com</td>
+    <td>
+      <button onclick="toggleEditMode(this)">Edit</button>
+      <button onclick="deleteRow(this)">Delete</button>
+    </td>
+  </tr>
+</table>
+
+<script>
+function deleteRow(btn) {
+  var row = btn.parentNode.parentNode;
+  row.parentNode.removeChild(row);
+}
+
+function toggleEditMode(btn) {
+  var row = btn.parentNode.parentNode;
+  var cells = row.getElementsByTagName("td");
+  
+  // Toggle contenteditable attribute for each cell
+  for (var i = 0; i < cells.length - 1; i++) {
+    var isEditing = cells[i].getAttribute("contenteditable") === "true";
+    cells[i].setAttribute("contenteditable", !isEditing);
+  }
+  
+  // Toggle button text
+  var buttonText = btn.innerText === "Edit" ? "Save" : "Edit";
+  btn.innerText = buttonText;
+}
+</script>
+
+</body>
+</html>
+In this version:
+
+Each table cell (<td>) has the contenteditable attribute set to true, which allows its content to be editable directly by the user.
+The "Edit" button toggles the editing mode for the respective row. When clicked, it toggles the contenteditable attribute of each cell.
+The button text is toggled between "Edit" and "Save" based on the current editing state.
+
+
+
+
+

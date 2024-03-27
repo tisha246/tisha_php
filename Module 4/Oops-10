@@ -1,0 +1,41 @@
+In PHP, the parent constructor is not called implicitly when you create an object of a class. By default, PHP does not automatically call the constructor of the parent class when you instantiate an object of a subclass.
+
+If you have a subclass that extends a parent class and both classes have constructors, and you want the parent constructor to be executed when creating an object of the subclass, you need to explicitly call the parent constructor from within the subclass constructor using the parent::__construct() syntax.
+
+Here's an example to illustrate:
+
+php
+Copy code
+class ParentClass {
+    public function __construct() {
+        echo "Parent constructor called.\n";
+    }
+}
+
+class ChildClass extends ParentClass {
+    public function __construct() {
+        // Call the parent constructor explicitly
+        parent::__construct();
+        echo "Child constructor called.\n";
+    }
+}
+
+// Create an instance of the child class
+$obj = new ChildClass();
+Output:
+
+kotlin
+Copy code
+Parent constructor called.
+Child constructor called.
+In this example:
+
+Both ParentClass and ChildClass have constructors.
+When creating an object of ChildClass, the constructor of ChildClass is called implicitly. However, to also execute the constructor of ParentClass, it needs to be called explicitly using parent::__construct() within the constructor of ChildClass.
+By explicitly calling the parent constructor within the subclass constructor, you can ensure that the initialization logic of the parent class is executed before the subclass-specific initialization logic. This allows for proper initialization of the subclass object while maintaining the integrity of the parent class's initialization logic.
+
+
+
+
+
+

@@ -1,0 +1,70 @@
+
+Creating a hotel room booking system can be quite extensive, but I'll outline a basic structure that allows users to book rooms in three different ways: by searching for available rooms, by selecting from a list of available rooms, or by specifying their preferences and letting the system suggest available rooms. Below is a simple implementation in PHP:
+
+php
+Copy code
+<?php
+
+class Room {
+    public $number;
+    public $type;
+    public $status;
+
+    public function __construct($number, $type) {
+        $this->number = $number;
+        $this->type = $type;
+        $this->status = 'Available'; // Default status
+    }
+}
+
+class Hotel {
+    public $rooms = [];
+
+    public function __construct($numRooms) {
+        // Initialize rooms
+        for ($i = 1; $i <= $numRooms; $i++) {
+            $this->rooms[] = new Room($i, 'Standard');
+        }
+    }
+
+    public function searchAvailableRooms() {
+        $availableRooms = [];
+        foreach ($this->rooms as $room) {
+            if ($room->status === 'Available') {
+                $availableRooms[] = $room;
+            }
+        }
+        return $availableRooms;
+    }
+
+    public function bookRoom($roomNumber) {
+        foreach ($this->rooms as $room) {
+            if ($room->number == $roomNumber) {
+                if ($room->status === 'Available') {
+                    $room->status = 'Booked';
+                    return "Room {$roomNumber} booked successfully.";
+                } else {
+                    return "Room {$roomNumber} is not available.";
+                }
+            }
+        }
+        return "Room {$roomNumber} not found.";
+    }
+}
+
+// Usage
+$hotel = new Hotel(10); // Create a hotel with 10 rooms
+
+// Method 1: Search for available rooms
+$availableRooms = $hotel->searchAvailableRooms();
+echo "Available Rooms:\n";
+foreach ($availableRooms as $room) {
+    echo "Room {$room->number} ({$room->type})\n";
+}
+
+// Method 2: Book a specific room
+echo $hotel->bookRoom(3) . "\n"; // Book room 3
+
+
+
+

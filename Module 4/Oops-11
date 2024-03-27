@@ -1,0 +1,13 @@
+If a constructor is defined as private or protected, it restricts the access to that constructor from outside the class. Here's what happens in each case:
+
+Private Constructor:
+
+A private constructor means that the class cannot be instantiated from outside the class itself.
+This is often used in classes that are not meant to be instantiated, perhaps because they contain only static methods or serve as containers for other static members.
+It can also be used in Singleton design pattern implementations, where the class controls its own instantiation to ensure only one instance is created.
+Protected Constructor:
+
+A protected constructor allows only derived classes to access the constructor.
+This is useful when you want to prevent instantiation of the base class by external code but still allow derived classes to call the constructor.
+It's commonly used in inheritance scenarios where you want to enforce certain initialization logic in the base class, but you want to control which derived classes can be instantiated.
+In summary, defining a constructor as private or protected controls the visibility and accessibility of the constructor, which impacts how the class can be instantiated and used by other parts of the program.

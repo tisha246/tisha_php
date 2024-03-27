@@ -1,0 +1,85 @@
+If the user selects a full-day booking option, where they only need to specify the check-in and check-out dates without specifying the time, you can simplify the booking process accordingly. Here's how you can implement it:
+
+User Interface:
+Booking Form:
+Provide fields for the user to select the check-in and check-out dates.
+Hide the time selection fields if the user chooses the full-day option.
+Backend Logic:
+Handling Full-Day Booking:
+
+When the user selects the full-day option, set the check-in time to the start of the selected day (e.g., 12:00 AM) and the check-out time to the end of the selected day (e.g., 11:59 PM).
+This way, the user effectively books the room for the entire day without specifying the exact time.
+Availability Check:
+
+Adjust the availability check logic to consider only the date part of the check-in and check-out timestamps.
+Ensure that the booked room remains unavailable for the entire duration of the selected dates.
+Frontend Implementation:
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Room Booking</title>
+</head>
+<body>
+
+<h2>Room Booking</h2>
+<form action="process_booking.php" method="post">
+  <label for="checkin">Check-in Date:</label>
+  <input type="date" id="checkin" name="checkin" required><br><br>
+  
+  <label for="checkout">Check-out Date:</label>
+  <input type="date" id="checkout" name="checkout" required><br><br>
+  
+  <label for="fullday">Full Day:</label>
+  <input type="checkbox" id="fullday" name="fullday">
+  
+  <button type="submit">Book Now</button>
+</form>
+
+<script>
+document.getElementById('fullday').addEventListener('change', function() {
+  if (this.checked) {
+    // Disable checkout date input and set its value to checkin date
+    document.getElementById('checkout').setAttribute('disabled', 'disabled');
+    document.getElementById('checkout').value = document.getElementById('checkin').value;
+  } else {
+    // Enable checkout date input
+    document.getElementById('checkout').removeAttribute('disabled');
+  }
+});
+</script>
+
+</body>
+</html>
+Backend Implementation (process_booking.php):
+php
+Copy code
+<?php
+// Perform necessary validations and processing
+$checkin = $_POST['checkin'];
+$checkout = $_POST['checkout'];
+
+if (isset($_POST['fullday'])) {
+    // If full-day option is selected, set check-in time to start of the day and check-out time to end of the day
+    $checkin = date('Y-m-d 00:00:00', strtotime($checkin));
+    $checkout = date('Y-m-d 23:59:59', strtotime($checkout));
+}
+
+// Perform booking process and database operations
+// Redirect to appropriate page after processing
+?>
+In this implementation:
+
+The user interface provides date fields for check-in and check-out.
+When the user selects the full-day option, the check-out date field is disabled, and its value is set to match the check-in date using JavaScript.
+The backend script (process_booking.php) handles the form submission, adjusts the check-in and check-out times if the full-day option is selected, and processes the booking accordingly.
+This approach simplifies the booking process for full-day bookings, allowing users to specify only the date without worrying about the time.
+
+
+
+
+
+

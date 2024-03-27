@@ -1,0 +1,33 @@
+In jQuery, both $(document).ready() and $(window).load() are used to execute code when certain events occur during the page loading process, but they differ in their timing and purpose:
+
+$(document).ready():
+
+This event occurs when the HTML document has been fully loaded and parsed (i.e., the DOM is ready).
+It allows jQuery code to be executed as soon as the DOM hierarchy is ready for manipulation, even if other resources like images and stylesheets are still loading.
+This event is suitable for most cases where you want to perform DOM manipulation or initialize JavaScript functionality that doesn't depend on the complete loading of external resources like images.
+Example:
+
+javascript
+Copy code
+$(document).ready(function() {
+    // jQuery code to be executed when the DOM is ready
+});
+$(window).load():
+
+This event occurs when all the content on the page, including images, scripts, and other resources, has finished loading.
+It waits for everything on the page to be fully loaded before executing the associated JavaScript code.
+This event is useful when you need to perform actions that require all external resources to be loaded, such as retrieving the dimensions of images or initializing plugins that rely on the full page content.
+Example:
+
+javascript
+Copy code
+$(window).load(function() {
+    // jQuery code to be executed when the entire page is fully loaded
+});
+In summary, $(document).ready() is triggered when the DOM is ready for manipulation, while $(window).load() is triggered after all resources, including images and other external files, have finished loading. The choice between them depends on the specific requirements of your code and whether you need to wait for all resources to be fully loaded before executing certain JavaScript functionality. However, it's worth noting that $(document).ready() is more commonly used due to its faster execution and suitability for most scenarios.
+
+
+
+
+
+

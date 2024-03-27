@@ -1,0 +1,44 @@
+Certainly! Object iteration in PHP can be achieved using the foreach loop. Here's an example PHP script demonstrating object iteration:
+
+php
+Copy code
+<?php
+
+// Define a class
+class MyClass {
+    public $name;
+    public $age;
+
+    public function __construct($name, $age) {
+        $this->name = $name;
+        $this->age = $age;
+    }
+}
+
+// Create objects of MyClass
+$obj1 = new MyClass("John", 30);
+$obj2 = new MyClass("Alice", 25);
+$obj3 = new MyClass("Bob", 35);
+
+// Create an array of objects
+$objects = [$obj1, $obj2, $obj3];
+
+// Iterate over each object
+foreach ($objects as $object) {
+    // Access object properties
+    echo "Name: " . $object->name . ", Age: " . $object->age . "\n";
+}
+
+?>
+In this script:
+
+We define a class MyClass with two public properties: $name and $age.
+We create three objects of MyClass: $obj1, $obj2, and $obj3.
+We store these objects in an array called $objects.
+We use a foreach loop to iterate over each object in the $objects array.
+Within the loop, we access the properties of each object using the arrow operator (->) and print them.
+
+
+
+
+

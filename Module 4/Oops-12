@@ -1,0 +1,49 @@
+In PHP, magic methods, also known as magic functions, are special methods that are automatically called in response to certain PHP events. These methods are named with a double underscore prefix (e.g., __construct(), __toString(), __get(), etc.). Here's a list of some commonly used magic methods in PHP:
+
+__construct(): Automatically called when an object is created.
+__destruct(): Automatically called when an object is destroyed.
+__call(): Called when invoking inaccessible methods in an object context.
+__callStatic(): Called when invoking inaccessible methods in a static context.
+__get(): Called when getting an inaccessible property.
+__set(): Called when setting an inaccessible property.
+__isset(): Called when checking if an inaccessible property is set.
+__unset(): Called when unsetting an inaccessible property.
+__toString(): Called when an object is treated as a string.
+__invoke(): Called when an object is invoked as a function.
+__clone(): Called when an object is cloned.
+Here's an example program demonstrating the use of the static keyword in PHP:
+
+php
+Copy code
+<?php
+class Counter {
+    private static $count = 0;
+
+    public function __construct() {
+        self::$count++;
+    }
+
+    public static function getCount() {
+        return self::$count;
+    }
+}
+
+// Create some instances of the Counter class
+$counter1 = new Counter();
+$counter2 = new Counter();
+$counter3 = new Counter();
+
+// Get the count using the static method
+echo "Count: " . Counter::getCount(); // Output: Count: 3
+?>
+In this example:
+
+We define a class Counter with a private static property $count to keep track of the number of instances created.
+The constructor increments the count each time a new instance is created.
+The getCount() method is a static method that returns the current count.
+We create three instances of the Counter class and then use the getCount() static method to retrieve the count of instances created.
+
+
+
+
+

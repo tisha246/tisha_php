@@ -1,0 +1,38 @@
+T_PAAMAYIM_NEKUDOTAYIM is a term used in PHP programming language to refer to the Scope Resolution Operator (::). The term "T_PAAMAYIM_NEKUDOTAYIM" itself is Hebrew for "double colon." The reason for this term in PHP is historical and somewhat humorous, reflecting PHP's developer's sense of humor. It's sometimes also jokingly referred to as "Paamayim Nekudotayim."
+
+The Scope Resolution Operator (::) in PHP is primarily used to access static methods and properties, constants, and overridden methods in a class. It allows you to reference elements of a class without needing to instantiate an object of that class.
+
+Here's an example demonstrating the use of the Scope Resolution Operator in PHP:
+
+php
+Copy code
+class MyClass {
+    const MY_CONSTANT = 10;
+    
+    public static $staticProperty = 20;
+    
+    public static function staticMethod() {
+        echo "This is a static method.\n";
+    }
+}
+
+// Accessing constant using Scope Resolution Operator
+echo MyClass::MY_CONSTANT . "\n";
+
+// Accessing static property using Scope Resolution Operator
+echo MyClass::$staticProperty . "\n";
+
+// Calling static method using Scope Resolution Operator
+MyClass::staticMethod();
+In this example:
+
+MyClass::MY_CONSTANT accesses the constant MY_CONSTANT defined in the MyClass class.
+MyClass::$staticProperty accesses the static property $staticProperty defined in the MyClass class.
+MyClass::staticMethod() calls the static method staticMethod() defined in the MyClass class.
+The Scope Resolution Operator allows you to work with class elements directly, without needing to create an instance of the class. It's particularly useful for accessing static members and methods, as well as for invoking static methods.
+
+
+
+
+
+

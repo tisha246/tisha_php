@@ -1,0 +1,39 @@
+In jQuery, both prop() and attr() are methods used to get or set attributes and properties of HTML elements, but they differ in their behavior and the types of values they handle:
+
+attr():
+
+The attr() method is primarily used to get or set HTML attributes of elements.
+It retrieves the value of the attribute specified by the parameter. If multiple elements are selected, it returns the value of the attribute from the first matched element.
+When setting attributes, attr() modifies the HTML attribute in the DOM, and subsequent changes in the attribute value reflect in the HTML markup.
+It works with attributes like class, id, title, src, href, etc.
+Example:
+
+javascript
+Copy code
+// Get the value of the "src" attribute of an image
+var srcValue = $('img').attr('src');
+
+// Set the value of the "href" attribute of a link
+$('a').attr('href', 'https://example.com');
+prop():
+
+The prop() method is used to get or set properties of elements, such as boolean attributes (checked, disabled), and DOM properties (value, innerHTML, selectedIndex, etc.).
+It retrieves the current value of the property specified by the parameter. If multiple elements are selected, it returns the value of the property from the first matched element.
+When setting properties, prop() updates the JavaScript property of the DOM element, and changes are reflected in the DOM property, not in the HTML attribute.
+It's typically used with properties that represent the state of an element, like checked, disabled, etc.
+Example:
+
+javascript
+Copy code
+// Get the "checked" property of a checkbox
+var isChecked = $('#myCheckbox').prop('checked');
+
+// Set the "disabled" property of a button
+$('#myButton').prop('disabled', true);
+In summary, attr() deals with HTML attributes and directly manipulates the HTML markup, while prop() deals with properties of DOM elements and modifies the JavaScript properties of the element. It's essential to choose the appropriate method based on whether you're working with HTML attributes or DOM properties to ensure correct behavior and consistent updates.
+
+
+
+
+
+

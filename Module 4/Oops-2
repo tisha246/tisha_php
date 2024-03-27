@@ -1,0 +1,23 @@
+Object-oriented systems possess several key properties that distinguish them from other programming paradigms. Here are some of the essential properties of object-oriented systems:
+
+Encapsulation: Encapsulation refers to the bundling of data (attributes) and methods (functions or procedures) that operate on the data into a single unit or object. It hides the internal state of an object from the outside world and only exposes the necessary interfaces for interacting with it. Encapsulation helps in achieving information hiding and reduces system complexity.
+
+Inheritance: Inheritance is a mechanism that allows a new class (subclass or derived class) to inherit properties and behaviors (methods) from an existing class (superclass or base class). This promotes code reuse and establishes a hierarchical relationship between classes. Subclasses can extend or override the behavior of their superclass.
+
+Polymorphism: Polymorphism means "many forms" and refers to the ability of objects of different classes to be treated as objects of a common superclass. Polymorphism allows methods to be written to manipulate objects of a superclass to behave correctly for objects of its subclasses. It enables flexibility and extensibility in the design of systems.
+
+Abstraction: Abstraction involves simplifying complex reality by modeling classes appropriate to the problem domain and working at the most relevant level of inheritance for a particular aspect of the problem. Abstraction allows developers to focus on essential features while hiding unnecessary details. It helps in managing complexity and facilitates software maintenance and evolution.
+
+Modularity: Modularity is the property of decomposing a system into smaller, manageable units or modules. In object-oriented systems, classes serve as modules, encapsulating related data and behavior. Modularity promotes code organization, reusability, and maintainability by allowing developers to work on independent components without affecting the entire system.
+
+Message Passing: Object-oriented systems typically communicate by passing messages between objects. Objects interact with each other by invoking methods on one another, which leads to message passing. Message passing allows for loose coupling between objects, as they communicate through well-defined interfaces without exposing their internal implementations.
+
+Dynamic Binding: Dynamic binding, also known as late binding or runtime polymorphism, allows method calls to be resolved at runtime rather than compile time. It enables flexibility by allowing objects to respond to messages based on their actual runtime type. Dynamic binding is crucial for achieving polymorphic behavior in object-oriented systems.
+
+These properties collectively contribute to the effectiveness of object-oriented systems in modeling real-world entities, promoting code reuse, enhancing maintainability, and facilitating the development of complex software applications.
+
+
+
+
+
+

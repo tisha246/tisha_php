@@ -1,0 +1,107 @@
+To implement this functionality, we'll need to modify the previous example by adding an "Edit" link next to the "Delete" link. When the "Edit" link is clicked, it should open the row for editing. We'll achieve this using JavaScript to toggle the visibility of the row for editing. Below is the modified code:
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 11 - Editable Table</title>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+</style>
+</head>
+<body>
+
+<table id="myTable">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Actions</th>
+  </tr>
+  <tr>
+    <td>John Doe</td>
+    <td>john@example.com</td>
+    <td>
+      <button onclick="editRow(this)">Edit</button>
+      <button onclick="deleteRow(this)">Delete</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Jane Smith</td>
+    <td>jane@example.com</td>
+    <td>
+      <button onclick="editRow(this)">Edit</button>
+      <button onclick="deleteRow(this)">Delete</button>
+    </td>
+  </tr>
+</table>
+
+<script>
+function deleteRow(btn) {
+  var row = btn.parentNode.parentNode;
+  row.parentNode.removeChild(row);
+}
+
+function editRow(btn) {
+  var row = btn.parentNode.parentNode;
+  var cells = row.getElementsByTagName("td");
+  var name = cells[0].innerText;
+  var email = cells[1].innerText;
+  var editForm = `
+    <tr>
+      <td><input type="text" value="${name}"></td>
+      <td><input type="text" value="${email}"></td>
+      <td>
+        <button onclick="saveRow(this)">Save</button>
+        <button onclick="cancelEdit(this)">Cancel</button>
+      </td>
+    </tr>
+  `;
+  row.insertAdjacentHTML('afterend', editForm);
+  row.style.display = 'none'; // Hide original row
+}
+
+function cancelEdit(btn) {
+  var row = btn.parentNode.parentNode;
+  var editRow = row.previousElementSibling;
+  row.parentNode.removeChild(editRow);
+  row.style.display = ''; // Show original row
+}
+
+function saveRow(btn) {
+  var row = btn.parentNode.parentNode;
+  var inputs = row.getElementsByTagName("input");
+  var name = inputs[0].value;
+  var email = inputs[1].value;
+  var cells = row.previousElementSibling.getElementsByTagName("td");
+  cells[0].innerText = name;
+  cells[1].innerText = email;
+  row.parentNode.removeChild(row);
+  row.previousElementSibling.style.display = ''; // Show original row
+}
+</script>
+
+</body>
+</html>
+In this modified version:
+
+Added an "Edit" button next to each row's "Delete" button.
+Implemented editRow, cancelEdit, and saveRow functions to handle editing functionality.
+When the "Edit" button is clicked, it hides the original row and displays an editable row with input fields for editing. It also displays "Save" and "Cancel" buttons.
+The "Save" button saves the changes made and reverts back to the original view.
+The "Cancel" button cancels the editing process and reverts back to the original view.
+
+
+
+
+

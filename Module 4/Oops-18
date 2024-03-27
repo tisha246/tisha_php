@@ -1,0 +1,100 @@
+To implement the functionality where clicking on the "Edit" button fills the row's cells with data and changes the button to a "Confirm" button, you can use JavaScript to handle these actions dynamically. Here's how you can achieve this:
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 11 - Editable Table with Confirm Button</title>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+  .editing input[type="text"] {
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+
+<table id="myTable">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Options</th>
+  </tr>
+  <tr>
+    <td><input type="text" value="John Doe" disabled></td>
+    <td><input type="text" value="john@example.com" disabled></td>
+    <td>
+      <button onclick="editRow(this)">Edit</button>
+      <button onclick="deleteRow(this)">Delete</button>
+    </td>
+  </tr>
+  <tr>
+    <td><input type="text" value="Jane Smith" disabled></td>
+    <td><input type="text" value="jane@example.com" disabled></td>
+    <td>
+      <button onclick="editRow(this)">Edit</button>
+      <button onclick="deleteRow(this)">Delete</button>
+    </td>
+  </tr>
+</table>
+
+<script>
+function deleteRow(btn) {
+  var row = btn.parentNode.parentNode;
+  row.parentNode.removeChild(row);
+}
+
+function editRow(btn) {
+  var row = btn.parentNode.parentNode;
+  var cells = row.getElementsByTagName("td");
+  
+  // Fill text boxes with current data
+  for (var i = 0; i < cells.length - 1; i++) {
+    var input = cells[i].querySelector("input[type='text']");
+    input.removeAttribute("disabled");
+  }
+
+  // Change "Edit" button to "Confirm"
+  btn.innerText = "Confirm";
+  btn.setAttribute("onclick", "confirmEdit(this)");
+}
+
+function confirmEdit(btn) {
+  var row = btn.parentNode.parentNode;
+  var cells = row.getElementsByTagName("td");
+  
+  // Disable text boxes and update button back to "Edit"
+  for (var i = 0; i < cells.length - 1; i++) {
+    var input = cells[i].querySelector("input[type='text']");
+    input.setAttribute("disabled", true);
+  }
+
+  // Change button back to "Edit"
+  btn.innerText = "Edit";
+  btn.setAttribute("onclick", "editRow(this)");
+}
+</script>
+
+</body>
+</html>
+In this code:
+
+Each row initially contains input fields with the disabled attribute, making them appear as plain text.
+When the "Edit" button is clicked, the input fields become editable by removing the disabled attribute. The button text is also changed to "Confirm" and its onclick event is updated to call the confirmEdit function.
+When the "Confirm" button is clicked, the input fields are disabled again, reverting them to plain text. The button text is changed back to "Edit" and its onclick event is updated to call the editRow function.
+
+
+
+
+

@@ -1,0 +1,23 @@
+
+In jQuery, the starting point of code execution is typically within a document ready event handler. This event handler ensures that the code inside it will only execute once the DOM (Document Object Model) of the web page is fully loaded and ready for manipulation.
+
+The syntax for the document ready event handler in jQuery is as follows:
+
+javascript
+Copy code
+$(document).ready(function() {
+    // jQuery code to be executed when the DOM is ready
+});
+Alternatively, the shorthand notation for the document ready event handler is:
+
+javascript
+Copy code
+$(function() {
+    // jQuery code to be executed when the DOM is ready
+});
+Both of these syntaxes achieve the same result—they execute the enclosed code once the DOM is fully loaded and ready for manipulation. This ensures that any manipulation of HTML elements or interaction with the DOM occurs only after the page has been fully rendered, preventing any potential issues with accessing elements that have not yet been loaded.
+
+
+
+
+

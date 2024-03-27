@@ -1,0 +1,39 @@
+In object-oriented programming, when you extend a class (create a subclass), you may want to call the constructor of the parent class (superclass) from within the constructor of the subclass. This is often necessary to ensure that any initialization tasks defined in the parent class's constructor are executed before the subclass's constructor runs. In PHP, you can call the parent constructor using the parent::__construct() syntax. Here's how you can do it:
+
+php
+Copy code
+class ParentClass {
+    public function __construct() {
+        echo "Parent constructor called.\n";
+    }
+}
+
+class ChildClass extends ParentClass {
+    public function __construct() {
+        // Call the parent constructor
+        parent::__construct();
+        echo "Child constructor called.\n";
+    }
+}
+
+// Create an instance of the child class
+$obj = new ChildClass();
+Output:
+
+kotlin
+Copy code
+Parent constructor called.
+Child constructor called.
+In this example:
+
+The ParentClass defines a constructor that prints a message when it's called.
+The ChildClass extends ParentClass and defines its own constructor.
+Inside the constructor of ChildClass, parent::__construct() is used to call the constructor of the parent class (ParentClass).
+When you create an instance of ChildClass, both the constructor of ParentClass and ChildClass are called, and the output reflects the order of execution.
+By calling the parent constructor within the subclass's constructor, you ensure that any initialization tasks defined in the parent class are executed before the subclass-specific initialization tasks. This allows for proper initialization of the subclass object while maintaining the integrity of the parent class's initialization logic.
+
+
+
+
+
+
